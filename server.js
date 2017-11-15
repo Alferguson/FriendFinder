@@ -13,3 +13,5 @@ app.use(bodyParser.json());
 app.listen(PORT, function() {
   	console.log("FriendFinder listening on PORT " + PORT);
 });
+
+module.exports(app);
