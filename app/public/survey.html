@@ -155,18 +155,17 @@
 			</div>
 		</div>	
 		<script src="https://code.jquery.com/jquery.js"></script>
-		<script type="text/javascript" src="../routing/htmlRoutes.js"></script>
 	</body>
 </html>
 
 <script type="text/javascript">
-	var modal = require("jquery-modal");
 	$("#submit").on("click", function(event) {
 		event.preventDefault();
+		$("#modal").modal("show");
 		// Here we grab the user data
 		var newFriend = {
-			name: $("#name").val().trim(),
-			photo: $("#photo").val().trim(),
+			name: $("#nameID").val().trim(),
+			photo: $("#photoID").val().trim(),
 			scores: [
 				$("#question1").val().trim(),
 				$("#question2").val().trim(),
@@ -183,13 +182,11 @@
 
 		console.log(newFriend);
 
-		// var currentURL = window.location.origin;
-
 	    $.post("/api/friends", newFriend)
 	    .done(function(data) {
 	    	// Clear the form when submitting
-    		$("#name").val("");
-			$("#photo").val("");
+    		$("#nameID").val("");
+			$("#photoID").val("");
 			$("#question1").val("");
 			$("#question2").val("");
 			$("#question3").val("");
@@ -228,7 +225,7 @@
 				// $("#myModal").modal("toggle");
 				$("#modal-body").append("<p>" + friendName + "</p>");
 				$("#modal-body").append("<img src='friendPhoto' alt = 'image'>");
-				$("modal").modal();
+				$("#modal").modal("show");
 			})	    	
 	    }
 	});
