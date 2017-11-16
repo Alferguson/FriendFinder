@@ -148,7 +148,7 @@
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
-					<div class="modal-body">
+					<div id="modal-body" class="modal-body">
 						...
 					</div>
 				</div>
@@ -160,6 +160,7 @@
 </html>
 
 <script type="text/javascript">
+	var modal = require("jquery-modal");
 	$("#submit").on("click", function(event) {
 		event.preventDefault();
 		// Here we grab the user data
@@ -186,7 +187,6 @@
 
 	    $.post("/api/friends", newFriend)
 	    .done(function(data) {
-
 	    	// Clear the form when submitting
     		$("#name").val("");
 			$("#photo").val("");
@@ -210,16 +210,6 @@
 				}	
 				// get scores of recently added friend 
 		    	var newScore = friends[friends.length-1].scores;
-		  //   	// calculates difference of last added friend to first friend
-		  //   	var difference = [];
-				// for (var i=0; i<friends[0].scores; i++) {
-				// 	difference.push(Math.abs(newScore[i] - friends[0].scores[i]));
-				// }
-				// // difference is equal to combined first friend and last friend score
-				// function addOrgin() {
-				// 	difference = difference.reduce(getSum);
-				// }	
-				// compareScore will be auto generated for friends after the first one and is compared to difference  
 		    	var compareScore = [];
 		    	var allScores = [];
 				for (var j=0; j<friends.length-1; j++) {
@@ -235,7 +225,10 @@
 				goodFriendScore = Math.min.apply(null, allScores);
 				friendName = friends[goodFriendScore].name;
 				friendPhoto = friends[goodFriendScore].photo;
-				$("#myModal").modal("toggle");	
+				// $("#myModal").modal("toggle");
+				$("#modal-body").append("<p>" + friendName + "</p>");
+				$("#modal-body").append("<img src='friendPhoto' alt = 'image'>");
+				$("modal").modal();
 			})	    	
 	    }
 	});
