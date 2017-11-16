@@ -1,12 +1,18 @@
 var friends = [
-	"question1": 1,
-	"question2": 2,
-	"question3": 3,
-	"question4": 4,
-	"question5": 5,
-	"question6": 6,
-	"question7": 7,
-	"question8": 8,
-	"question9": 9,
-	"question10": 10
+	{
+		"name": "Poilker",
+		"photo": "https://www.stockfreeimages.com/Snowboard-boy-acting-bad-thumb3819521.jpg",
+		"scores": [
+			1,
+			2,
+			1,
+			4,
+			5,
+			2,
+			3,
+			4,
+			2,
+			5
+		]
+	}
 ]

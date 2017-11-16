@@ -15,7 +15,7 @@
 			<h1>FriendFinder</h1>
 			<h3>Find your next true Friend! Answer these simple questions</h3>
 			<hr>
-			<a href="/add"><button id="survey" type="button" class="btn btn-success btn-lg"><span class="glyphicon glyphicon-plus"></span>Go to Survey</button></a>
+			<a href="/survey"><button id="survey" type="button" class="btn btn-success btn-lg"><span class="glyphicon glyphicon-plus"></span>Go to Survey</button></a>
 		</div>
 	</div>	
 	<footer> 
@@ -25,28 +25,6 @@
 			<a href="https://thumbs.dreamstime.com/z/fat-bad-boy-sausage-19392638.jpg">A cursed image</a>
 		</div>	
 	</footer>
-	<script type="text/javascript">
-		$("#survey").on("click", function() {
-			var searchedCharacter = $("#character-search").val().trim();
-
-			searchedCharacter = searchedCharacter.replace(/\s+/g, "").toLowerCase();
-
-			$.get("/api/" + searchedCharacter, function(data) {
-				console.log(data);
-				if (data) {
-					$("#stats").show();
-					$("#name").text(data.name);
-					$("#role").text(data.role);
-					$("#age").text(data.age);
-					$("#force-points").text(data.forcePoints);
-				}
-				else {
-					$("#name").text("The force is not strong with this one. Your character was not found.");
-					$("#stats").hide();
-				}
-			});
-		});
-  	</script>	
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<script type="text/javascript" src="../routing/htmlRoutes.js"></script>
 </body>
