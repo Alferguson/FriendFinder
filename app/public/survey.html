@@ -129,7 +129,23 @@
 				<a href="https://github.com/Alferguson/FriendFinder">GitHub Repo for FriendFinder | </a>
 				<a href="https://thumbs.dreamstime.com/z/fat-bad-boy-sausage-19392638.jpg">A cursed image</a>
 			</div>	
-		</footer>	
+		</footer>
+		<!-- Modal -->
+		<div class="modal fade" id="modal" data-target="#myModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="modalLabel">Your new friend!</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						...
+					</div>
+				</div>
+			</div>
+		</div>	
 		<script src="https://code.jquery.com/jquery.js"></script>
 		<script type="text/javascript" src="../routing/htmlRoutes.js"></script>
 	</body>
@@ -188,10 +204,25 @@
 			next();
 	    });
 	    $.get("/api/friends", function(req,res) {
+	    	var newScore = friends[friends.length-1].scores
+	    	var difference = [];
+	    	var compareScore;
+			function getSum(total, num) {
+			    return total + num;
+			// }
+			// function myFunction() {
+			//     newScore = friends[friends.length-1].scores.reduce(getSum);
+			}
+			for (var i=0; i<friends.length-1; i++) {
+				for (var j=0; j<friends[i].scores; j++) {
+					difference.push(Math.abs(newScore[j] - friends[i].scores[j]));
+				}
+				function add() {
+					compareScore = difference.reduce(getSum);
+				}	
+			}
 
+			$("#myModal").modal("toggle");	    	
 	    })
 	});
-	function difference() {
-
-	}
 </script>	
