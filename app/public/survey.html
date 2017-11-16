@@ -184,17 +184,8 @@
 
 		// var currentURL = window.location.origin;
 
-	    $.post("/api/friends", newFriend, next)
+	    $.post("/api/friends", newFriend)
 	    .done(function(data) {
-
-	    	if(data == true){
-	    		alert("You will be matched soon!")
-	    	}
-
-	  
-	    	if(data == false){
-	    		alert("error")
-	    	}
 
 	    	// Clear the form when submitting
     		$("#name").val("");
@@ -209,29 +200,43 @@
 			$("#question8").val("");
 			$("#question9").val("");
 			$("#question10").val("");
-			next();
+			scores();
 	    });
-	    $.get("/api/friends", function(req,res) {
-	    	var newScore = friends[friends.length-1].scores
-	    	var difference = [];
-	    	var compareScore;
-			function getSum(total, num) {
-			    return total + num;
-			// }
-			// function myFunction() {
-			//     newScore = friends[friends.length-1].scores.reduce(getSum);
-			}
-			for (var i=0; i<friends.length-1; i++) {
-				for (var j=0; j<friends[i].scores; j++) {
-					difference.push(Math.abs(newScore[j] - friends[i].scores[j]));
-				}
-				function add() {
-					var compareScore[i];
-					compareScore[i] = difference.reduce(getSum);
+	    var scores = function() {
+		    $.get("/api/friends", function(req,res) {
+		    	var goodFriendScore;
+				function getSum(total, num) {
+				    return total + num;
 				}	
-			}
-
-			$("#myModal").modal("toggle");	    	
-	    })
+				// get scores of recently added friend 
+		    	var newScore = friends[friends.length-1].scores;
+		  //   	// calculates difference of last added friend to first friend
+		  //   	var difference = [];
+				// for (var i=0; i<friends[0].scores; i++) {
+				// 	difference.push(Math.abs(newScore[i] - friends[0].scores[i]));
+				// }
+				// // difference is equal to combined first friend and last friend score
+				// function addOrgin() {
+				// 	difference = difference.reduce(getSum);
+				// }	
+				// compareScore will be auto generated for friends after the first one and is compared to difference  
+		    	var compareScore = [];
+		    	var allScores = [];
+				for (var j=0; j<friends.length-1; j++) {
+					for (var k=0; k<friends[j].scores; k++) {
+						compareScore.push(Math.abs(newScore[k] - friends[j].scores[k]));
+					}
+					function addNew() {
+						compareScore = compareScore.reduce(getSum);
+						allScores.push(compareScore);
+					}
+				}
+				// compareScore > difference ? difference = compareScore : compareScore = [];
+				goodFriendScore = Math.min.apply(null, allScores);
+				friendName = friends[goodFriendScore].name;
+				friendPhoto = friends[goodFriendScore].photo;
+				$("#myModal").modal("toggle");	
+			})	    	
+	    }
 	});
 </script>	
