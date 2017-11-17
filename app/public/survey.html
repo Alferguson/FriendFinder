@@ -133,8 +133,9 @@
 
 		<footer> 
 			<div class="row col-sm-8 ml-5">
-				<a href="/api/friends">API Friends Lists | </a>
-				<a href="https://github.com/Alferguson/FriendFinder">GitHub Repo for FriendFinder | </a>
+				<a href="/api/friends">API Friends Lists</a>| 
+				<a href="https://github.com/Alferguson/FriendFinder">GitHub Repo for FriendFinder</a> 
+				| 
 				<a href="https://thumbs.dreamstime.com/z/fat-bad-boy-sausage-19392638.jpg">A cursed image</a>
 			</div>	
 		</footer>
@@ -161,7 +162,7 @@
 <script type="text/javascript">
 	$("#submit").on("click", function(event) {
 		event.preventDefault();
-		$("#modal").modal("show");
+		// $("#myModal").modal("show");
 		// Here we grab the user data
 		var newFriend = {
 			name: $("#nameID").val().trim(),
@@ -180,53 +181,70 @@
 			]
 		};
 
-		console.log(newFriend);
+	    $.post("/api/friends", newFriend, function(data) {
 
-	    $.post("/api/friends", newFriend)
-	    .done(function(data) {
 	    	// Clear the form when submitting
     		$("#nameID").val("");
 			$("#photoID").val("");
-			$("#question1").val("");
-			$("#question2").val("");
-			$("#question3").val("");
-			$("#question4").val("");
-			$("#question5").val("");
-			$("#question6").val("");
-			$("#question7").val("");
-			$("#question8").val("");
-			$("#question9").val("");
-			$("#question10").val("");
-			scores();
+			$("#question1").val("1");
+			$("#question2").val("1");
+			$("#question3").val("1");
+			$("#question4").val("1");
+			$("#question5").val("1");
+			$("#question6").val("1");
+			$("#question7").val("1");
+			$("#question8").val("1");
+			$("#question9").val("1");
+			$("#question10").val("1");
+
 	    });
-	    var scores = function() {
-		    $.get("/api/friends", function(req,res) {
+	    scores();
+	    function scores() {
+	    	var currentURL = window.location.origin;
+		    $.ajax({ url: currentURL + "/api/friends", method: "GET" })
+      		.done(function(friendsData) {
+      			console.log(friendsData);     		
+      			console.log(friendsData[parseInt(friendsData.length)-1]["scores[]"]);
 		    	var goodFriendScore;
 				function getSum(total, num) {
 				    return total + num;
 				}	
 				// get scores of recently added friend 
-		    	var newScore = friends[friends.length-1].scores;
+		    	var newScore = friendsData[friendsData.length-1].scores;
+		    	// console.log(newScore);
 		    	var compareScore = [];
 		    	var allScores = [];
-				for (var j=0; j<friends.length-1; j++) {
-					for (var k=0; k<friends[j].scores; k++) {
-						compareScore.push(Math.abs(newScore[k] - friends[j].scores[k]));
+		    	// compares user answers with each friend in friend array
+				for (var i=0; i<friendsData.length; i++) {
+					for (var j=0; j<friendsData[i].scores.length; j++) {
+						console.log(newScore[j]);
+						console.log("-----------------");
+						console.log(friendsData[i].scores[j]);
+						compareScore.push(Math.abs(newScore[j] - friendsData[i].scores[j]));
+						console.log(compareScore);
 					}
 					function addNew() {
 						compareScore = compareScore.reduce(getSum);
 						allScores.push(compareScore);
 					}
 				}
+				console.log(compareScore);
+				console.log(allScores);
 				// compareScore > difference ? difference = compareScore : compareScore = [];
 				goodFriendScore = Math.min.apply(null, allScores);
-				friendName = friends[goodFriendScore].name;
-				friendPhoto = friends[goodFriendScore].photo;
+				// console.log(goodFriendScore);
+				// console.log(friendsData[0]);
+				// friendName = friendsData[goodFriendScore].name;
+				// friendPhoto = friendsData[goodFriendScore].photo;
+				// console.log(friendName);
+				// console.log(friendPhoto);
 				// $("#myModal").modal("toggle");
-				$("#modal-body").append("<p>" + friendName + "</p>");
-				$("#modal-body").append("<img src='friendPhoto' alt = 'image'>");
-				$("#modal").modal("show");
+				// $("#modal-body").append("<p>" + friendName + "</p>");
+				// $("#modal-body").append("<img src='friendPhoto' alt = 'image'>");
+
+				// $("#modal").modal("show");
 			})	    	
 	    }
+
 	});
 </script>	

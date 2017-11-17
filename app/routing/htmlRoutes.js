@@ -1,5 +1,4 @@
-var express = require("express");
-var bodyParser = require("body-parser");
+
 var path = require("path");
 
 module.exports = function(app) {
@@ -12,7 +11,7 @@ module.exports = function(app) {
 		res.sendFile(path.join(__dirname, "../public/survey.html"));
 	});
 
-	app.get("/api/friends", function(req, res) {
-		res.sendFile(path.join(__dirname, "../data/friends.js"));
-	});
+	// app.get("/api/friends", function(req, res) {
+	// 	res.sendFile(path.join(__dirname, "../data/friends.js"));
+	// });
 };

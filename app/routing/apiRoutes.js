@@ -2,17 +2,16 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var path = require("path");
 
-var friends = require("../data/friends.js");
+var friendsData = require("../data/friends");
 
 module.exports = function(app) {
     
     app.get("/api/friends", function(req, res) {
-        res.json(friends);
+        res.json(friendsData);
     });
 
     app.post("/api/friends", function(req, res) {
-        var newFriend = req.body;
-        console.log(newFriend);
-        res.json(newFriend);
+        friendsData.push(req.body);
+        res.json(true);
     });
 }    
