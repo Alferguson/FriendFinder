@@ -177,7 +177,7 @@
 				$("#question7").val().trim(),
 				$("#question8").val().trim(),
 				$("#question9").val().trim(),
-				$("#question10").val().trim(),
+				$("#question10").val().trim()
 			]
 		};
 
@@ -202,42 +202,49 @@
 	    function scores() {
 	    	var currentURL = window.location.origin;
 		    $.ajax({ url: currentURL + "/api/friends", method: "GET" })
-      		.done(function(friendsData) {
-      			console.log(friendsData);     		
-      			console.log(friendsData[parseInt(friendsData.length)-1]["scores[]"]);
+      		.done(function(friendsData) { 
+      			// userScore represents the user's data that inputed, below converts their scores to integers 
+      			var userScore = friendsData[parseInt(friendsData.length)-1]["scores[]"];
+      			var userScore = userScore.map(Number);
 		    	var goodFriendScore;
 				function getSum(total, num) {
 				    return total + num;
 				}	
-				// get scores of recently added friend 
-		    	var newScore = friendsData[friendsData.length-1].scores;
-		    	// console.log(newScore);
-		    	var compareScore = [];
 		    	var allScores = [];
 		    	// compares user answers with each friend in friend array
-				for (var i=0; i<friendsData.length; i++) {
-					for (var j=0; j<friendsData[i].scores.length; j++) {
-						console.log(newScore[j]);
+				for (var i=0; i<friendsData.length-1; i++) {
+					var compareScore = [];
+					console.log(friendsData[i].scores);
+					var friendsScore = friendsData[i].scores;
+					// if function to check if scores is a string, then convert it to integers
+					if (friendsScore === undefined) {
+						friendsScore = friendsData[i]["scores[]"].map(Number);
+					}
+					for (var j=0; j<friendsScore.length; j++) {
+						console.log(userScore[j]);
 						console.log("-----------------");
-						console.log(friendsData[i].scores[j]);
-						compareScore.push(Math.abs(newScore[j] - friendsData[i].scores[j]));
+						// friendsData[i] = friendsData[i]["scores[]"].map(Number); 
+						console.log(friendsScore[j]);
+						compareScore.push(Math.abs(userScore[j] - friendsScore[j]));
 						console.log(compareScore);
 					}
+					// function to add up the differences and then put that in allScores which will be used to extract the min value later
+					addNew();
 					function addNew() {
 						compareScore = compareScore.reduce(getSum);
+						console.log(compareScore);
 						allScores.push(compareScore);
+						console.log(allScores);
 					}
 				}
-				console.log(compareScore);
-				console.log(allScores);
 				// compareScore > difference ? difference = compareScore : compareScore = [];
 				goodFriendScore = Math.min.apply(null, allScores);
-				// console.log(goodFriendScore);
-				// console.log(friendsData[0]);
-				// friendName = friendsData[goodFriendScore].name;
-				// friendPhoto = friendsData[goodFriendScore].photo;
-				// console.log(friendName);
-				// console.log(friendPhoto);
+				console.log(goodFriendScore);
+				idNumber = allScores.indexOf(goodFriendScore);
+				friendName = friendsData[idNumber].name;
+				friendPhoto = friendsData[idNumber].photo;
+				console.log(friendName);
+				console.log(friendPhoto);
 				// $("#myModal").modal("toggle");
 				// $("#modal-body").append("<p>" + friendName + "</p>");
 				// $("#modal-body").append("<img src='friendPhoto' alt = 'image'>");
