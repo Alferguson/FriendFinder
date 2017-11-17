@@ -147,7 +147,7 @@
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h5 class="modal-title" id="modalLabel">Your new friend!</h5>
+						<h5 class="modal-title" id="modalLabel">Your new friend! Refresh the page if you want to enter a new friend.</h5>
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
@@ -164,7 +164,6 @@
 
 	$("#submit").on("click", function(event) {
 		event.preventDefault();
-		// $("#myModal").modal("show");
 		// Here we grab the user data
 		var newFriend = {
 			name: $("#nameID").val().trim(),
@@ -182,7 +181,7 @@
 				$("#question10").val().trim()
 			]
 		};
-
+		// post to api/friends the userData
 	    $.post("/api/friends", newFriend, function(data) {
 
 	    	// Clear the form when submitting
@@ -200,6 +199,7 @@
 			$("#question10").val("1");
 
 	    });
+	    // scores does the logic of comparing user data and other friends data
 	    scores();
 	    function scores() {
 	    	var currentURL = window.location.origin;
@@ -209,6 +209,7 @@
       			var userScore = friendsData[parseInt(friendsData.length)-1]["scores[]"];
       			var userScore = userScore.map(Number);
 		    	var goodFriendScore;
+		    	// getSum is used later to sum array data
 				function getSum(total, num) {
 				    return total + num;
 				}	
@@ -245,8 +246,6 @@
 				idNumber = allScores.indexOf(goodFriendScore);
 				friendName = friendsData[idNumber].name;
 				friendPhoto = friendsData[idNumber].photo;
-				console.log(friendName);
-				console.log(friendPhoto);
 				// activate modal
 				$("#modal-body").append("<p>" + friendName + "!</p>");
 				$("#modal-body").append("<img src=" + friendPhoto + " alt = 'image' of your loser friend>");
