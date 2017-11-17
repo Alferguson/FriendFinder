@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+		<script src="https://code.jquery.com/jquery.js"></script>
+		<title>FriendFinder</title>
+	</head>
+	<body>
+		<div class="container">
+			<div class="jumbotron">
+			  	<h1>Survey Questions</h1>
+			  	<hr>
+			  	<h3>With 1 being strongly disagree and 5 being strongly agree, choose the answers that best fit you</h3>
+			</div>
+		</div>
+		<div class="col-sm-8 mx-auto">
+			<form role="form">
+				<div class="form-group">
+					<label for="name">Enter your name below</label>
+					<input type="name" class="form-control" id="nameID" placeholder="wuts ur name">
+				</div>	
+				<div class="form-group">
+					<label for="photo">Place a photo url here</label>
+					<input type="photo" class="form-control" id="photoID" placeholder="gimmie that url">
+				</div>								
+				<label for="question1">I extremeley disapprove the fact that England does not butter their popcorn</label>
+				<select id="question1" class="custom-select form-control">
+					<!-- <option selected>I extremeley disapprove the fact that England does not butter their popcorn</option> -->
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+				</select>
+				<br>
+				<label for="question2">I think Jeb Bush should have won the election</label>
+				<select id="question2" class="custom-select form-control">
+					<!-- <option selected>I think Jeb Bush should have won the election</option> -->
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+				</select>
+				<br>
+				<label for="question3">I BELIEVE Jeb Bush won the election</label>
+				<select id="question3" class="custom-select form-control">
+					<!-- <option selected>I BELIEVE Jeb Bush won the election</option> -->
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+				</select>
+				<br>
+				<label for="question4">People who hate the idea of pineapple on pizza are just hopping on a bandwangon to make themselves feel better</label>
+				<select id="question4" class="custom-select form-control">
+					<!-- <option selected>People who hate the idea of pineapple on pizza are just hopping on a bandwangon to make themselves feel better</option> -->
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+				</select>
+				<br>
+				<label for="question5">I prefer driving over BART/Busses</label>
+				<select id="question5" class="custom-select form-control">
+					<!-- <option selected>I prefer driving over BART/Busses</option> -->
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+				</select>
+				<br>
+				<label for="question6">Drinking water is for losers</label>
+				<select id="question6" class="custom-select form-control">
+					<!-- <option selected>Drinking water is for losers</option> -->
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+				</select>
+				<br>
+				<label for="question7">Sports!</label>
+				<select id="question7" class="custom-select form-control">
+					<!-- <option selected>When a game prompts me to press any button to continue, I press the power button and become angry as the game as well as my pc turns off</option> -->
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+				</select>
+				<br>
+				<label for="question8">I try to adhere to Diogenes the Cynic's philosophy as much as possible</label>
+				<select id="question8" class="custom-select form-control">
+					<!-- <option selected>I try to adhere to Diogenes the Cynic's philosophy as much as possible</option> -->
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+				</select>
+				<br>
+				<label for="question9">The number 4 is a cool number</label>
+				<select id="question9" class="custom-select form-control">
+					<!-- <option selected>The number 4 is a cool number</option> -->
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+				</select>
+				<br>
+				<label for="question10">I prefer eating string cheese in one bite</label>
+				<select id="question10" class="custom-select form-control">
+					<!-- <option selected>I prefer eating string cheese in one bite</option> -->
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+				</select>
+				<br>
+				<button id="submit" type="submit" class="btn btn-primary submit">Submit</button>
+			</form>
+		</div>
+
+		<footer> 
+			<div class="row col-sm-8 ml-5">
+				<a href="/api/friends">API Friends Lists</a>| 
+				<a href="https://github.com/Alferguson/FriendFinder">GitHub Repo for FriendFinder</a> 
+				| 
+				<a href="https://thumbs.dreamstime.com/z/fat-bad-boy-sausage-19392638.jpg">A cursed image</a>
+			</div>	
+		</footer>
+		<!-- Modal -->
+		<div class="modal fade" id="modal" data-target="myModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="modalLabel">Your new friend! Refresh the page if you want to enter a new friend.</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div id="modal-body" class="modal-body"><p>After much calculation, you should be best friends with ...</p></div>
+				</div>
+			</div>
+		</div>	
+
+	</body>
+</html>
+
+<script type="text/javascript">
+
+	$("#submit").on("click", function(event) {
+		event.preventDefault();
+		// Here we grab the user data
+		var newFriend = {
+			name: $("#nameID").val().trim(),
+			photo: $("#photoID").val().trim(),
+			scores: [
+				$("#question1").val().trim(),
+				$("#question2").val().trim(),
+				$("#question3").val().trim(),
+				$("#question4").val().trim(),
+				$("#question5").val().trim(),
+				$("#question6").val().trim(),
+				$("#question7").val().trim(),
+				$("#question8").val().trim(),
+				$("#question9").val().trim(),
+				$("#question10").val().trim()
+			]
+		};
+		// post to api/friends the userData
+	    $.post("/api/friends", newFriend, function(data) {
+
+	    	// Clear the form when submitting
+    		$("#nameID").val("");
+			$("#photoID").val("");
+			$("#question1").val("1");
+			$("#question2").val("1");
+			$("#question3").val("1");
+			$("#question4").val("1");
+			$("#question5").val("1");
+			$("#question6").val("1");
+			$("#question7").val("1");
+			$("#question8").val("1");
+			$("#question9").val("1");
+			$("#question10").val("1");
+
+	    });
+	    // scores does the logic of comparing user data and other friends data
+	    scores();
+	    function scores() {
+	    	var currentURL = window.location.origin;
+		    $.ajax({ url: currentURL + "/api/friends", method: "GET" })
+      		.done(function(friendsData) { 
+      			// userScore represents the user's data that inputed, below converts their scores to integers 
+      			var userScore = friendsData[parseInt(friendsData.length)-1]["scores[]"];
+      			var userScore = userScore.map(Number);
+		    	var goodFriendScore;
+		    	// getSum is used later to sum array data
+				function getSum(total, num) {
+				    return total + num;
+				}	
+		    	var allScores = [];
+		    	// compares user answers with each friend in friend array
+				for (var i=0; i<friendsData.length-1; i++) {
+					var compareScore = [];
+					var friendsScore = friendsData[i].scores;
+					// if function to check if scores is a string, then convert it to integers
+					if (friendsScore === undefined) {
+						friendsScore = friendsData[i]["scores[]"].map(Number);
+					}
+					for (var j=0; j<friendsScore.length; j++) {
+						compareScore.push(Math.abs(userScore[j] - friendsScore[j]));
+					}
+					// function to add up the differences and then put that in allScores which will be used to extract the min value later
+					addNew();
+					function addNew() {
+						compareScore = compareScore.reduce(getSum);
+						allScores.push(compareScore);
+					}
+				}
+				// take min of allScores and that should be user's new friend
+				goodFriendScore = Math.min.apply(null, allScores);
+				// get id of allScores and use it for friends data to retrieve friendName and friendPhoto
+				idNumber = allScores.indexOf(goodFriendScore);
+				friendName = friendsData[idNumber].name;
+				friendPhoto = friendsData[idNumber].photo;
+				// activate modal
+				$("#modal-body").append("<p>" + friendName + "!</p>");
+				$("#modal-body").append("<img src=" + friendPhoto + " alt = 'image of your loser friend'>");
+				jQuery.noConflict(true);
+				$("#modal").modal("toggle");
+			})	    	
+	    }
+
+	});
+</script>	
